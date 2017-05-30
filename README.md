@@ -16,6 +16,7 @@
 # DB設計
 
 ##  users table
+### implemented by devise Gem
 |Column   |Type   |Options                          |
 |:--------|:-----:|:--------------------------------|
 |id       |integer|index:true,null:false            |
