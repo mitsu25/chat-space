@@ -60,8 +60,8 @@
 |id        |integer   |null:false                   |
 |body      |text      |                             |
 |image     |text      |                             |
-|user_id   |references|foreign_key: true            |
-|group_id  |references|foreign_key: true            |
+|user_id   |references|index:true,foreign_key: true |
+|group_id  |references|index:true,foreign_key: true |
 
 ###  Association
 
