@@ -26,8 +26,8 @@
 
 ###  Association
 
-  + has_many :groups, through: members
-  + has_many :members
+  + has_many :groups, through: user_groups
+  + has_many :user_groups
   + has_many :messages
 
 ##  groups table
@@ -38,8 +38,8 @@
 
 ###  Association
 
-  + has_many :users, through: members
-  + has_many :members
+  + has_many :users, through: user_groups
+  + has_many :user_groups
   + has_many :messages
 
 ##  user_group table
