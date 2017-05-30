@@ -42,17 +42,17 @@
   + has_many :members
   + has_many :messages
 
-##  members table
+##  user_group table
 |Column  |Type      |Options                         |
 |:-------|:--------:|:-------------------------------|
 |id      |integer   |null:false                      |
-|user_id |references|foreign_key: true               |
-|group_id|references|foreign_key: true               |
+|user_id |references|index:true,foreign_key: true    |
+|group_id|references|index:true,foreign_key: true    |
 
 ###  Association
 
   + belongs_to :user
-  + belongs_to :groups
+  + belongs_to :group
 
 ##  messages table
 |Column    |Type      |Options                      |
