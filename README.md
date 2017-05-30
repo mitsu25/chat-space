@@ -25,20 +25,21 @@
 
 ###  Association
 
-+ has_many :groups, through: members
-+ has_many :messages
-+ has_many :members
+  + has_many :groups, through: members
+  + has_many :members
+  + has_many :messages
 
 ##  groups table
-|Column|Type  |Options                              |
+|Column|Type   |Options                             |
 |:-----|:-----:|:-----------------------------------|
 |id    |integer|null:false                          |
 |name  |string |null:false                          |
 
 ###  Association
 
-+ has_many :users, through: members
-+ has_many :members
+  + has_many :users, through: members
+  + has_many :members
+  + has_many :messages
 
 ##  members table
 |Column  |Type      |Options                         |
@@ -49,21 +50,22 @@
 
 ###  Association
 
-+ belongs_to :user
-+ belongs_to :groups
+  + belongs_to :user
+  + belongs_to :groups
 
 ##  messages table
-|Column |Type      |Options                     |
-|:------|:--------:|:---------------------------|
-|body   |text      |null:false                  |
-|user   |references|index:true,foreign_key: true|
-|group  |references|index:true,foreign_key: true|
+|Column    |Type      |Options                      |
+|:---------|:--------:|:----------------------------|
+|id        |integer   |null:false                   |
+|body      |text      |                             |
+|image     |text      |                             |
+|user_id   |references|foreign_key: true            |
+|group_id  |references|foreign_key: true            |
 
 ###  Association
 
-+ belongs_to :user
-+ belongs_to :groups
-
+  + belongs_to :user
+  + belongs_to :groups
 
 * Database initialization
 
