@@ -20,6 +20,8 @@ group :development do
   gem 'spring'
 end
 
-#Added Gems
+# Added Gems
+
 gem 'haml-rails'
+
 gem 'erb2haml'
