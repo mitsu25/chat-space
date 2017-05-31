@@ -22,6 +22,10 @@ end
 
 # Added Gems
 
+# haml
 gem 'haml-rails'
-
+# erbからhamlに変換
 gem 'erb2haml'
+
+#font-awesome用
+gem 'font-awesome-rails'
