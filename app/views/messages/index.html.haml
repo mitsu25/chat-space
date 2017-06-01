@@ -1,40 +1,34 @@
-%div{class: "header"}
-  %div{class: "header__notice--display-block"} チャットグループが作成されました。
-  %div{class: "header__left-content"}
-    %p{class: "header__left-content__user-name"}
-    %span.header__left-content__user-name__name User Name
-    %span.header__left-content__user-name.fa.fa-edit
-    %span.header__left-content__user-name.fa.fa-cog
-  %div{class: "header__right-content"}
-    %p{class: "header__right-content__group-title"}  Sample グループ
-  %p{class: "header__right-content__group-members"}  Members: Nakano MItsuhiro
-%div{class: "contents"}
-  %div{class: "contents__left-contens"}
-    %div{class: "contents__left-contens__group"}
-      %p{class: "contents__left-contens__group__group-name"} Group 1
-      %p{class: "contents__left-contens__group__new-message"} できる！
-      %p{class: "contents__left-contens__group__group-name"} Group 2
-      %p{class: "contents__left-contens__group__new-message"} できるよ！
-  %div{class: "contents__right-contens"}
-    %div{class: "contents__right-contens__message"}
-      %div{class: "contents__right-contens__message__message-upper"}
-        %p{class: "contents__right-contens__message__message-upper__user-name"} Nakano Mitsuhiro
-        %p{class: "contents__right-contens__message__message-upper__post-date"} 2017/05/31 16:00
-      %div{class: "contents__right-contens__message__message-bottom"}
-        %p{class: "contents__right-contens__message__message-bottom-text"} できる！
-    %div{class: "contents__right-contens__message"}
-      %div{class: "contents__right-contens__message__message-upper"}
-        %p{class: "contents__right-contens__message__message-upper__user-name"} Nakano Mitsuhiro
-        %p{class: "contents__right-contens__message__message-upper__post-date"} 2017/05/31 16:00
-      %div{class: "contents__right-contens__message__message-bottom"}
-        %p{class: "contents__right-contens__message__message-bottom-text"} できる！
-    %div{class: "contents__right-contens__message"}
-      %div{class: "contents__right-contens__message__message-upper"}
-        %p{class: "contents__right-contens__message__message-upper__user-name"} Nakano Mitsuhiro
-        %p{class: "contents__right-contens__message__message-upper__post-date"} 2017/05/31 16:00
-      %div{class: "contents__right-contens__message__message-bottom"}
-        %p{class: "contents__right-contens__message__message-bottom-text"} できる！
-    %div{class: "contents__right-contens__form"}
-    %div{class: "contents__right-contens__form__input", placeholder: "type a message"}
-    %span.fa.fa-file-picture-o
-    %div{class: "contents__right-contens__form__button"} send
+.message チャットグループが作成されました。
+
+.sidebar
+  .sidebar__upper_sidebar
+    %p.sidebar__upper_sidebar__item UserName
+    %i.sidebar__upper_sidebar__item__icon.fa.fa-edit
+    %i.sidebar__upper_sidebar__item__icon.fa.fa-cog
+  .sidebar__bottom_sidebar
+    .sidebar__bottom_sidebar__group
+      %p.sidebar__bottom_sidebar__group__group_name Group 1
+      %p.sidebar__bottom_sidebar__group__new_message New message 1
+    .sidebar__bottom_sidebar__group
+      %p.sidebar__bottom_sidebar__group__group_name Group 2
+      %p.sidebar__bottom_sidebar__group__new_message New message 2
+
+.main
+  .main__group_info
+    %p.main__group_info__edit_button.button Edit
+    %p.main__group_info__name Sample Group 1
+    %p.main__group_info__members Members: member1 menber2
+  .main__chat_area
+    .main__chat_area__chat_cotent
+      %p.main__chat_area__chat_content__name Member 1
+      %p.main__chat_area__chat_content__date 2017/05/31
+      %p.main__chat_area__chat_content__text This is sample text. This is sample text. This is sample text.
+    .main__chat_area__chat_cotent
+      %p.main__chat_area__chat_content__name Member 2
+      %p.main__chat_area__chat_content__date 2017/06/01
+      %p.main__chat_area__chat_content__text Finaly I finished!
+  .main__posting_area
+    .main__posting_area__form Type a message
+    %i.main__posting_area__icon.fa.fa-file-image-o
+    .main__posting_area__button.button Send
+
