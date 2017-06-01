@@ -10,55 +10,78 @@
   border-bottom: 1px solid $color;
 }
 
+@mixin sidebar_padding {
+    padding-left  : 20px;
+    padding-right : 20px;
+}
+
+@mixin upper_sidebar_padding {
+    padding-top   : 35px;
+    padding-bottom: 35px;
+    padding-left  : 20px;
+    padding-right : 20px;
+}
+
+// ----------------変数定義----------------------
+$white              : #FFFFFF;
+$success_notice     : #38AEF0;
+$user_info_color    : #253141;
+$sidebar_color      : #2f3e51;
+$chatarea_color     : #F9F9F9;
+$sidebar_height     : calc(100vh - 12px);
+$sidebar_width      : 300px;
+$main_height        : calc(100vh - 12px);
+$main_width         : calc(100% - 300px);
+$posting_area_height: 90px;
+//----------------------------------------------
+
 .message{
-  background-color: #38AEF0;
-  text-align: center;
-  color: #ffffff;
+  background-color : $success_notice;
+  text-align       : center;
+  color            : $white;
   @include clearfix;
 }
+
 .sidebar{
-  width: 300px;
-  height: calc(100vh - 12px);
-  color: #FFFFFF;
-  background-color: #2f3e51;
-  float: left;
+  width           : $sidebar_width;
+  height          : $sidebar_height;
+  color           : $white;
+  float           : left;
+  background-color: $sidebar_color;
 
   &__upper_sidebar{
-    padding-top: 35px;
-    padding-bottom: 35px;
-    background-color: #253141;
+    background-color : $user_info_color;
+    @include upper_sidebar_padding;
     @include clearfix;
-    padding-left: 20px;
-    padding-right: 20px;
-
 
     &__item{
       font-size: 16px;
-      color: #FFFFFF;
-      float :left;
+      color    : $white;
+      float    :left;
 
       &__icon{
         padding: 5px;
-        float: right;
+        float  : right;
       }
     }
   }
 
   &__bottom_sidebar{
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top  : 20px;
+    @include sidebar_padding;
+
     &__group{
-      // margin-bottom: 40px;
+
       &__group_name{
         font-size: 15px;
-        color: #FFFFFF;
+        color    : $white;
       }
+
       &__new_message{
-        margin-top: 5px;
-        font-size: 11px;
-        color: #FFFFFF;
+        margin-top   : 5px;
         margin-bottom: 40px;
+        font-size    : 11px;
+        color        : $white;
       }
     }
   }
@@ -66,104 +89,108 @@
 
 .main{
   height: calc(100vh - 12px);
-  width: calc(100vw - 300px);
-  float:left;
+  width : calc(100vw - 300px);
+  float :left;
 
   &__group_info{
-    width: calc(100% -300px);
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left   : 40px;
+    padding-right  : 40px;
     @include border;
-    font-size: 20px;
 
     &__name{
       padding-top: 35px;
-      font-size: 20px;
-      color: #333333;
+      font-size  : 20px;
+      color      : #333333;
     }
+
     &__members{
       padding-top: 15px;
-      font-size: 12px;
-      color: #999999;
+      font-size  : 12px;
+      color      : #999999;
     }
+
     &__edit_button{
-      font-size: 14px;
-      color: #38AEF0;
-      line-height: 40px;
-      margin-top: 28px;
-      padding-left: 20px;
+      font-size   : 14px;
+      color        : #38AEF0;
+      line-height  : 40px;
+      margin-top   : 28px;
+      padding-left : 20px;
       padding-right: 20px;
-      border:  2px solid #38AEF0;
-      float: right;
+      border       :  2px solid #38AEF0;
+      float        : right;
     }
   }
 
   &__chat_area{
-    height       : 65% ;
-    padding-top  : 46px;
-    padding-left : 40px;
-    padding-right: 40px;
-    background-color: #F9F9F9;
+    height          : 65% ;
+    padding-top     : 46px;
+    padding-left    : 40px;
+    padding-right   : 40px;
+    background-color: $chatarea_color;
 
     &__chat_content{
 
       &__name{
-        font-size: 16px;
+        font-size  : 16px;
         font-weight: bold;
-        float :left;
+        float      :left;
       }
+
       &__date{
         margin-left: 10px;
         padding-top: 4px;
-        font-size: 12px;
-        color: #999999;
+        font-size  : 12px;
+        color      : #999999;
         line-height: 16px;
-        float :left;
+        float      :left;
       }
+
       &__text{
-        clear: both;
-        padding-top: 10px;
+        padding-top   : 10px;
         padding-bottom: 40px;
-        font-size: 14px;
-        color: #434A54;
+        font-size     : 14px;
+        color         : #434A54;
+        clear         : both;
       }
     }
   }
+
   &__posting_area{
-    height: 15% ;
-    background-color: red;
-    padding-left: 40px;
-    padding-right: 40px;
-    background-color: #D5D5D5;
+    height            : $posting_area_height;
+    background-color  : red;
+    padding-left      : 40px;
+    padding-right     : 40px;
+    background-color  : #D5D5D5;
 
     &__form{
-      width  : calc( 100% - 140px );
-      margin : 20px 0px;
-      padding-left : 10px;
-      padding-right: 10px;
-      background-color: #FFFFFF;
-      line-height : 50px;
-      font-size: 16px;
-      color: #626262;
-      float: left;
+      width           : calc( 100% - 140px );
+      margin          : 20px 0px;
+      padding-left    : 10px;
+      padding-right   : 10px;
+      background-color: $white;
+      line-height     : 50px;
+      font-size       : 16px;
+      color           : #626262;
+      float           : left;
     }
+
     &__icon{
       line-height: 50px;
-      font-size: 16px;
-      float: left;
-      margin : 20px 0px;
-      padding: 0px;
-      position: relative;
-      right: 30px;
+      font-size  : 16px;
+      margin     : 20px 0px;
+      position   : relative;
+      right      : 30px;
+      float      : left;
     }
+
     &__button{
-      margin: 20px 0px 20px 15px;
-      padding-left : 20px;
-      padding-right: 20px;
+      margin          : 20px 0px 20px 15px;
+      padding-left    : 25px;
+      padding-right   : 25px;
       background-color: #299BEF;
-      line-height: 50px;
-      color: #FFFFFF;
-      float: right;
+      line-height     : 50px;
+      color           : $white;
+      float           : right;
     }
   }
 }
