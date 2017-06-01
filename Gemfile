@@ -29,3 +29,6 @@ gem 'erb2haml'
 
 #font-awesome用
 gem 'font-awesome-rails'
+
+#ユーザ管理用のGem
+gem 'devise'
