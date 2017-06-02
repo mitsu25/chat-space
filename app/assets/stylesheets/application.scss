@@ -1,10 +1,16 @@
 @import "./reset";
 
+// configファイル
 @import "./config/variables";
 
+// mixin
 @import "./mixin/mixin";
-/*font_awesome*/
+
+//font_awesome
 @import "font-awesome";
+
+// moduleファイル
+@import "./module/flash_message";
 
 @import "./index";
 
