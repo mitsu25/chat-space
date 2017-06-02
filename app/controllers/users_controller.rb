@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(name:user_params[:name],email:user_params[:email])
-    redirect_to controller: :messages, action: :index
+    redirect_to messages_path
   end
 
   private
