@@ -9,6 +9,9 @@ Bundler.require(*Rails.groups)
 module ChatSpace
   class Application < Rails::Application
 
+    # deviseのメッセージを日本語へ翻訳 デフォルトのlocaleを日本語指定
+    config.i18n.default_locale = :ja
+
     #controller生成時に不要ファイルを作成しない設定
     config.generators do |g|
       g.javascripts    false
