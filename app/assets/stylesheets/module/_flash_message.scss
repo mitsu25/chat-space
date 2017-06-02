@@ -1,0 +1,12 @@
+.message{
+  background-color : $success_notice;
+  text-align       : center;
+  color            : $white;
+
+  &__notice{
+    background-color : $success_notice;
+  }
+  &__alert{
+    background-color : $error_red;
+  }
+}

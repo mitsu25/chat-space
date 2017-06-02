@@ -1,10 +1,3 @@
-.message{
-  background-color : $success_notice;
-  text-align       : center;
-  color            : $white;
-  @include clearfix;
-}
-
 .sidebar{
   width           : $sidebar_width;
   height          : $sidebar_height;
@@ -52,7 +45,7 @@
 }
 
 .main{
-  height: calc(100vh - 12px);
+  height: $main_height;
   width : calc(100vw - 300px);
   float :left;
 
@@ -86,7 +79,7 @@
   }
 
   &__chat_area{
-    height          : 65% ;
+    height          : $chat_area_height;
     padding-top     : 46px;
     padding-left    : 40px;
     padding-right   : 40px;
