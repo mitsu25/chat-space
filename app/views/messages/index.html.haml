@@ -2,8 +2,10 @@
 
 .sidebar
   .sidebar__upper_sidebar
-    %p.sidebar__upper_sidebar__item UserName
-    %i.sidebar__upper_sidebar__item__icon.fa.fa-edit
+    %p.sidebar__upper_sidebar__item
+      = current_user.name
+    = link_to edit_user_path(current_user.id) do
+      %i.sidebar__upper_sidebar__item__icon.fa.fa-edit
     %i.sidebar__upper_sidebar__item__icon.fa.fa-cog
   .sidebar__bottom_sidebar
     .sidebar__bottom_sidebar__group

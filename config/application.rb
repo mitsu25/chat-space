@@ -11,9 +11,10 @@ module ChatSpace
 
     #controller生成時に不要ファイルを作成しない設定
     config.generators do |g|
-      g.javascripts false
-      g.helper false
+      g.javascripts    false
+      g.helper         false
       g.test_framework false
+      g.scss           false
     end
 
   end
