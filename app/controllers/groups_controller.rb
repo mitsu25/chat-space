@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.create(name:group_params[:name])
     create_records_on_user_group_table(@group)
-    redirect_to messages_path
+    render action: :new
   end
 
   private
