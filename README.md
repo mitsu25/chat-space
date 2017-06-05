@@ -42,7 +42,7 @@
   + has_many :user_groups
   + has_many :messages
 
-##  user_group table
+##  users_groups table
 |Column  |Type      |Options                         |
 |:-------|:--------:|:-------------------------------|
 |id      |integer   |null:false                      |
