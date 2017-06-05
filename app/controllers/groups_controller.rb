@@ -20,8 +20,13 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    @group.update(name: group_params[:name],user_ids: user_ids)
-    redirect_to messages_path
+    if @group.update(name: group_params[:name],user_ids: user_ids)
+      flash.now[:notice] = "チャットグループが更新されました"
+      @groups = Group.all
+      render template: "messages/index"
+    else
+      render action: :edit
+    end
   end
 
   private
