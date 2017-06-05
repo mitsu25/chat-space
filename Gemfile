@@ -32,3 +32,6 @@ gem 'font-awesome-rails'
 
 #ユーザ管理用のGem
 gem 'devise'
+
+#デバッグ用
+gem 'pry-rails'
