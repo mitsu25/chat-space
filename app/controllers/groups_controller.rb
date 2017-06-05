@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(name: group_params[:name],user_ids: group_params[:user_group_ids])
+    @group = Group.new(group_params)
     if @group.save
       flash.keep[:notice] = "新規グループが作成されました"
       redirect_to messages_path
