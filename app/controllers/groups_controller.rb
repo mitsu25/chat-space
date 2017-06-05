@@ -18,6 +18,12 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def update
+    @group = Group.find(params[:id])
+    @group.update(name: group_params[:name],user_ids: user_ids)
+    redirect_to messages_path
+  end
+
   private
   # paramsからgroupnameとuser_group_idsを取得するメソッド
   def group_params
