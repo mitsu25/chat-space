@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :get_group, only: [:edit, :update]
+  before_action :get_group, only: [:edit, :update, :show]
 
   def new
     @group = Group.new
@@ -25,6 +25,11 @@ class GroupsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def show
+    @groups = Group.all
+    @message = Message.new
   end
 
   private

@@ -1,0 +1,38 @@
+.sidebar
+  .sidebar__upper_sidebar
+    %p.sidebar__upper_sidebar__item
+      = current_user.name
+    = link_to edit_user_path(current_user.id) do
+      %i.sidebar__upper_sidebar__item__icon.fa.fa-edit
+    %i.sidebar__upper_sidebar__item__icon.fa.fa-cog
+  .sidebar__bottom_sidebar
+    - @groups.each do |group|
+      .sidebar__bottom_sidebar__group
+        %p.sidebar__bottom_sidebar__group__group_name 
+          = group.name
+        %p.sidebar__bottom_sidebar__group__new_message まだメッセージはありません。
+
+
+.main
+  .main__group_info
+    %p.main__group_info__edit_button.button Edit
+    %p.main__group_info__name
+      = @group.name
+    %p.main__group_info__members
+      = @group.users.each do |user|
+        = "#{user.name}"
+  .main__chat_area
+    .main__chat_area__chat_cotent
+      %p.main__chat_area__chat_content__name Member 1
+      %p.main__chat_area__chat_content__date 2017/05/31
+      %p.main__chat_area__chat_content__text This is sample text. This is sample text. This is sample text.
+    .main__chat_area__chat_cotent
+      %p.main__chat_area__chat_content__name Member 2
+      %p.main__chat_area__chat_content__date 2017/06/01
+      %p.main__chat_area__chat_content__text Finaly I finished!
+  .main__posting_area
+    = form_for([@group,@message]) do |f|
+      = f.text_field :body, placeholder: "Type a message", class: "main__posting_area__form"
+      = f.label 'image', class: 'main__posting_area__icon fa fa-file-image-o'  do
+        = f.file_field :image, style: "display: none;", id: 'message_image'
+      = f.submit :Send, class: "main__posting_area__button button"
