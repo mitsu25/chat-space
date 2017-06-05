@@ -6,7 +6,12 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(name: group_params[:name],user_ids: user_ids)
+    if @group.save
+      flash.now[:notice] = "新規グループが作成されました"
+      render template: "messages/index"
+    else
       render action: :new
+    end
   end
 
   private
