@@ -5,9 +5,8 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.create(name:group_params[:name],user_ids:user_ids)
-    # create_records_on_user_group_table(@group)
-    render action: :new
+    @group = Group.new(name: group_params[:name],user_ids: user_ids)
+      render action: :new
   end
 
   private
