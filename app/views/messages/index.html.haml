@@ -8,12 +8,11 @@
       %i.sidebar__upper_sidebar__item__icon.fa.fa-edit
     %i.sidebar__upper_sidebar__item__icon.fa.fa-cog
   .sidebar__bottom_sidebar
-    .sidebar__bottom_sidebar__group
-      %p.sidebar__bottom_sidebar__group__group_name Group 1
-      %p.sidebar__bottom_sidebar__group__new_message New message 1
-    .sidebar__bottom_sidebar__group
-      %p.sidebar__bottom_sidebar__group__group_name Group 2
-      %p.sidebar__bottom_sidebar__group__new_message New message 2
+    - @groups.each do |group|
+      .sidebar__bottom_sidebar__group
+        %p.sidebar__bottom_sidebar__group__group_name group.name
+        %p.sidebar__bottom_sidebar__group__new_message まだメッセージはありません。
+
 
 .main
   .main__group_info
