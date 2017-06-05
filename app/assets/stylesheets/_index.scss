@@ -29,6 +29,7 @@
   }
 
   &__bottom_sidebar{
+    margin-top   : $sidebar_top_height;
     padding-top  : 20px;
     @include sidebar_padding;
 
