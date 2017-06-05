@@ -9,10 +9,11 @@ $chatspace_blue     : #38aef0;
 $error_red          : #d65f4c;
 
 //variables for size----------------------------
-$sidebar_height     : 100vh;
-$sidebar_width      : 300px;
-$main_height        : 100vh;
-$main_width         : calc(100% - 300px);
-$chat_area_height   : calc(100% - 235px);
-$posting_area_height: 90px;
+$sidebar_height           : 100vh;
+$sidebar_width            : 300px;
+$side_bar_side_padding_sum: 40px ;
+$main_height              : 100vh;
+$main_width               : calc(100% - 300px);
+$chat_area_height         : calc(100% - 235px);
+$posting_area_height      : 90px;
 //----------------------------------------------

@@ -10,7 +10,8 @@
   .sidebar__bottom_sidebar
     - @groups.each do |group|
       .sidebar__bottom_sidebar__group
-        %p.sidebar__bottom_sidebar__group__group_name group.name
+        %p.sidebar__bottom_sidebar__group__group_name 
+          = group.name
         %p.sidebar__bottom_sidebar__group__new_message まだメッセージはありません。
 
 
