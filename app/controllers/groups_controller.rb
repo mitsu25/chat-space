@@ -14,6 +14,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
   private
   # paramsからgroupnameとuser_group_idsを取得するメソッド
   def group_params
