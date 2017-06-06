@@ -35,3 +35,6 @@ gem 'devise'
 
 #デバッグ用
 gem 'pry-rails'
+
+# Image Uploader
+gem 'carrierwave', '~> 1.0'
