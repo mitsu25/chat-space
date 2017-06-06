@@ -7,8 +7,13 @@ class MessagesController < ApplicationController
   end
 
   def create
-    Message.create(message_params)
-    redirect_to group_path(params[:group_id])
+    @message = Message.new(message_params)
+    if @group.save
+      flash.keep[:notice] = "メッセージを投稿しました。"
+      redirect_to group_path(params[:group_id])
+    else
+      render controller: :groups, action: :show
+    end
   end
 
   private

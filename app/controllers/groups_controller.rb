@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @groups = Group.all
+    @groups = Group.joins(:users).where(users: {id:current_user.id}).includes(:users, :messages)
     @message = Message.new
   end
 
