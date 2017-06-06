@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @groups = Group.all
+    @groups = Group.all.include(users,messages)
   end
 
   def create
