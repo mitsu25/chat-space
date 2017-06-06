@@ -59,6 +59,7 @@
     padding-left   : 40px;
     padding-right  : 40px;
     @include border;
+    @include clearfix;
 
     &__name{
       padding-top: 35px;
@@ -70,6 +71,16 @@
       padding-top: 15px;
       font-size  : 12px;
       color      : #999999;
+      float      : left;
+
+      &__name{
+        padding-top : 15px;
+        font-size   : 12px;
+        color       : #999999;
+        float       : left;
+        padding-left: 5px ;
+        float       : left;
+      }
     }
 
     &__edit_button{
@@ -114,6 +125,13 @@
         font-size     : 14px;
         color         : #434A54;
         clear         : both;
+      }
+      &__image img{
+        // padding-top   : 10px;
+        // padding-bottom: 40px;
+        max-width         : 300px;
+        max-height        : 200px;
+        // clear         : both;
       }
     }
   }
