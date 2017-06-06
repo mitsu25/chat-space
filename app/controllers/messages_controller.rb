@@ -14,7 +14,8 @@ class MessagesController < ApplicationController
       flash.keep[:notice] = "メッセージを投稿しました。"
       redirect_to group_messages_path(params[:group_id])
     else
-      render controller: :groups, action: :show
+      flash.keep[:alert] = "テキストを入力するか画像を添付してください。"
+      redirect_to group_messages_path(params[:group_id])
     end
   end
 
