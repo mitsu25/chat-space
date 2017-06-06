@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @groups = Group.all.include(users,messages)
+    @groups = Group.joins(:users).where(users: {id:current_user.id}).includes(:users, :messages)
+    @message = Message.new
   end
 
   def create
