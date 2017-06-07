@@ -1,20 +1,24 @@
 // ----------------変数定義----------------------
 //variables for color----------------------------
-$white              : #FFFFFF;
-$success_notice     : #38AEF0;
-$user_info_color    : #253141;
-$sidebar_color      : #2f3e51;
-$chatarea_color     : #F9F9F9;
-$chatspace_blue     : #38aef0;
-$error_red          : #d65f4c;
+$white               : #FFFFFF;
+$success_notice      : #38AEF0;
+$user_info_color     : #253141;
+$sidebar_color       : #2f3e51;
+$chatarea_color      : #F9F9F9;
+$chatspace_blue      : #38aef0;
+$chat_area_letters   : #434A54;
+$error_red           : #d65f4c;
+$form_area_gray      : #D5D5D5;
+$form_letter_gray    : #626262;
 
 //variables for size----------------------------
 $sidebar_height           : 100vh;
 $sidebar_width            : 300px;
-$sidebar_top_height       : 95px ;
 $side_bar_side_padding_sum: 40px ;
+$upper_content_height     : 95px ;
 $main_height              : 100vh;
 $main_width               : calc(100% - 300px);
+$group_info_width         : calc(100% - 380px);
 $chat_area_height         : calc(100% - 235px);
-$posting_area_height      : 90px;
+$posting_area_height      : 95px;
 //----------------------------------------------
