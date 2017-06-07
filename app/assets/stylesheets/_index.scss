@@ -8,12 +8,12 @@
 
 
   &__upper_sidebar{
+    font-weight      : bold;
+    width            : $sidebar_width - $side_bar_side_padding_sum;
     background-color : $user_info_color;
     @include upper_sidebar_padding;
     @include clearfix;
-    width           : $sidebar_width - $side_bar_side_padding_sum;
-    position: fixed;
-    z-index: 10;
+    @include fixed_position;
 
     &__item{
       font-size: 16px;
@@ -29,15 +29,20 @@
   }
 
   &__bottom_sidebar{
-    margin-top   : $sidebar_top_height;
+    margin-top   : $upper_content_height;
     padding-top  : 20px;
     @include sidebar_padding;
 
+    & a{
+      text-decoration  : none;
+    }
+
     &__group{
 
-      &__group_name{
-        font-size: 15px;
-        color    : $white;
+      &__group_name {
+        font-size        : 15px;
+        color            : $white;
+        font-weight      : bold;
       }
 
       &__new_message{
@@ -56,15 +61,20 @@
   float :left;
 
   &__group_info{
+    width          : $group_info_width;
     padding-left   : 40px;
     padding-right  : 40px;
+    padding-bottom :  5px;
+    background-color: $white;
     @include border;
     @include clearfix;
+    @include fixed_position;
 
     &__name{
       padding-top: 35px;
       font-size  : 20px;
-      color      : #333333;
+      color      : $chat_area_letters;
+      letter-spacing: 5px;
     }
 
     &__members{
@@ -75,10 +85,10 @@
 
       &__name{
         padding-top : 15px;
+        padding-left: 5px ;
         font-size   : 12px;
         color       : #999999;
         float       : left;
-        padding-left: 5px ;
         float       : left;
       }
     }
@@ -92,22 +102,26 @@
       padding-right: 20px;
       border       :  2px solid #38AEF0;
       float        : right;
+      cursor       : pointer;
     }
   }
 
   &__chat_area{
+    margin-top      : $upper_content_height;
     height          : $chat_area_height;
     padding-top     : 46px;
     padding-left    : 40px;
     padding-right   : 40px;
     background-color: $chatarea_color;
+    overflow: scroll;
 
     &__chat_content{
 
       &__name{
         font-size  : 16px;
-        font-weight: bold;
-        float      :left;
+        font-weight: 500;
+        color      : $chat_area_letters;
+        float      : left;
       }
 
       &__date{
@@ -123,7 +137,7 @@
         padding-top   : 10px;
         padding-bottom: 40px;
         font-size     : 14px;
-        color         : #434A54;
+        color         : $chat_area_letters;
         clear         : both;
       }
       &__image img{
@@ -135,10 +149,9 @@
 
   &__posting_area{
     height            : $posting_area_height;
-    background-color  : red;
     padding-left      : 40px;
     padding-right     : 40px;
-    background-color  : #D5D5D5;
+    background-color  : $form_area_gray;
 
     &__form{
       width           : calc( 100% - 140px );
@@ -148,7 +161,7 @@
       background-color: $white;
       line-height     : 50px;
       font-size       : 16px;
-      color           : #626262;
+      color           : $form_letter_gray;
       float           : left;
     }
 
@@ -159,16 +172,18 @@
       position   : relative;
       right      : 30px;
       float      : left;
+      cursor     : pointer;
     }
 
     &__button{
-      margin          : 20px 0px 20px 15px;
+      margin          : 20px 0px 20px 0px;
       padding-left    : 25px;
       padding-right   : 25px;
       background-color: #299BEF;
       line-height     : 50px;
       color           : $white;
-      float           : right;
+      float           : left;
+      cursor          : pointer;
     }
   }
 }
