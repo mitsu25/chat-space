@@ -15,7 +15,7 @@
           %p.sidebar__bottom_sidebar__group__group_name
             = group.name
           %p.sidebar__bottom_sidebar__group__new_message
-            - if group.messages.length == 0
+            - if group.messages.empty?
               まだメッセージはありません。
             - elsif group.messages.last.image.present?
               画像が投稿されています。
