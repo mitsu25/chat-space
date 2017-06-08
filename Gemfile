@@ -23,7 +23,9 @@ group :development do
   gem 'spring'
 end
 
-# Added Gems
+group :test do
+  gem 'faker'
+end
 
 # haml
 gem 'haml-rails'
