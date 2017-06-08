@@ -8,9 +8,5 @@ FactoryGirl.define do
     password_confirmation   pass
     created_at              DateTime.now
     updated_at              DateTime.now
-
-    after(:create) do |user|
-      user.groups << create_list(:group, 5)
-    end
   end
 end
