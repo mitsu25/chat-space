@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe User do
+describe Message do
   describe '#create' do
 
     context "it is valid" do
