@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   before_action :get_group, only: [:index, :create]
 
   def index
-    @groups = Group.joins(:users).where(users: {id:current_user.id}).includes(:users, :messages)
+    @groups = current_user.groups.includes(:messages)
     @message = Message.new
   end
 
