@@ -34,6 +34,14 @@ describe MessagesController, type: :controller do
         expect(response).to render_template :index
       end
     end
+
+    context "When user is not signed in" do
+      it "redirects to devise/sessions#new when user is not signed in" do
+        get :index, group_id: group
+        expect(response).to redirect_to new_user_session_path
+      end
+
+    end   #context "user not singed in"
   end     #Get #index
 end       #Message controller
 
