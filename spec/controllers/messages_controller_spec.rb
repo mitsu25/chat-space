@@ -2,8 +2,10 @@ require 'rails_helper'
 
 describe MessagesController, type: :controller do
 
-  let(:user)   { create(:user) }
-  let(:group)  { create(:group) }
+  let(:user)     { create(:user) }
+  let(:group)    { create(:group)}
+  let(:groups)   { create_list(:group, 5, user_ids: user.id)}
+  let(:messages) { create_list(:message, 5, user_id: user, group_id: group)}
 
   describe 'GET #index' do
 
@@ -24,7 +26,7 @@ describe MessagesController, type: :controller do
 
       it "populates an array of groups" do
         get :index, group_id: group
-        expect(assigns(:groups)).to match(user.groups)
+        expect(assigns(:groups)).to match(groups)
       end
 
       it "renders the :index template" do
@@ -32,21 +34,21 @@ describe MessagesController, type: :controller do
         expect(response).to render_template :index
       end
     end
+  end     #Get #index
+end       #Message controller
 
-  end
-end
 
 # メッセージ一覧ページを表示するアクション
 
 # ログインしている場合
 # アクション内で定義しているインスタンス変数があるか OK
-# 該当するビューが描画されているか ???
-
+# 該当するビューが描画されているか OK
 
 # ログインしていない場合
 # 意図したビューにリダイレクトできているか
-# メッセージを作成するアクション
 
+
+# メッセージを作成するアクション
 # ログインしているかつ、保存に成功した場合
 # メッセージの保存はできたのか
 # 意図した画面に遷移しているか
