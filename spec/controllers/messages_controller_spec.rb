@@ -1,13 +1,14 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe MessagesController, type: :controller do
 
   let(:user)     { create(:user) }
   let(:group)    { create(:group)}
   let(:groups)   { create_list(:group, 5, user_ids: user.id)}
+  let(:message)  { create(:message, user_id: user, group_id: group)}
   let(:messages) { create_list(:message, 5, user_id: user, group_id: group)}
 
-  describe 'GET #index' do
+  describe "GET #index" do
 
     context "when user is signed in" do
       before do
@@ -40,29 +41,67 @@ describe MessagesController, type: :controller do
         get :index, group_id: group
         expect(response).to redirect_to new_user_session_path
       end
-
     end   #context "user not singed in"
   end     #Get #index
+
+  describe "post #create" do
+
+    context ",when user is signed in" do
+
+      before do
+        login_user user
+      end
+
+      context ",and recording sccuesses, " do
+        # メッセージの保存はできたのか
+        it "saves a new message to the database" do
+          message_params = attributes_for(:message)
+          expect{ post :create, group_id: group, user_id: user, message:message_params }.to change(Message, :count).by(1)
+        end
+
+        it "generate a notice message on flash" do
+          message_params = attributes_for(:message)
+          post :create, group_id: group, user_id: user, message: message_params
+          expect(flash[:notice]).to include("メッセージを投稿しました。")
+        end
+        # 意図した画面に遷移しているか
+        it "redirects to messages#index after a message is saved" do
+          message_params = attributes_for(:message)
+          post :create, group_id: group, user_id: user, message: message_params
+          expect(response).to redirect_to group_messages_path(group_id: group)
+        end
+      end
+
+      context ", and recording fails, " do
+        it "doesn't save a new message to the database" do
+          message_params = attributes_for(:message, body: nil, image: nil)
+          expect{ post :create, group_id: group, user_id: user, message: message_params}.to change(Message, :count).by(0)
+        end
+        # 該当するインスタンス変数はあるか
+        it "generate an error message on flash" do
+          message_params = attributes_for(:message, body: nil, image: nil)
+          post :create, group_id: group, user_id: user, message: message_params
+          expect(flash[:alert]).to include("テキストを入力するか画像を添付してください。")
+        end
+
+        it "redirects to messages#index after a message is saved" do
+          message_params = attributes_for(:message, body: nil, image: nil)
+          post :create, group_id: group, user_id: user, message: message_params
+          expect(response).to redirect_to group_messages_path(group_id: group)
+        end
+      end
+
+    end   #context "singed in"
+
+    context "when user is not signed in" do
+
+      it "redirects to devise/sessions#new when user is not signed in" do
+        message_params = attributes_for(:message, body: nil, image: nil)
+        post :create, group_id: group, user_id: user, message: message_params
+        expect(response).to redirect_to new_user_session_path
+      end
+
+    end #context "not singed in"
+
+  end     #post #create
 end       #Message controller
-
-
-# メッセージ一覧ページを表示するアクション
-
-# ログインしている場合
-# アクション内で定義しているインスタンス変数があるか OK
-# 該当するビューが描画されているか OK
-
-# ログインしていない場合
-# 意図したビューにリダイレクトできているか
-
-
-# メッセージを作成するアクション
-# ログインしているかつ、保存に成功した場合
-# メッセージの保存はできたのか
-# 意図した画面に遷移しているか
-# ログインしているが、保存に失敗した場合
-# メッセージの保存は行われなかったか
-# 該当するインスタンス変数はあるか
-# 意図したビューが描画されているか
-# ログインしていない場合
-# 意図した画面にリダイレクトできているか ### MessagesControllerのテスト テストするべき項目は自身のmessages_controller.rbの中にあります。 自身で書いたコードをよく読み、どのようなテストが必要になるか考えて洗い出してみましょう。 コントローラのテストでは、以下のようなポイントをテストします。
