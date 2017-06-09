@@ -1,10 +1,10 @@
 FactoryGirl.define do
 
   factory :message do
-    body               "Hello!"
+    body               Faker::ChuckNorris.fact
     image              File.open('spec/fixtures/files/sample.png')
-    user_id            "1"
-    group_id           "1"
+    user
+    group
   end
 
 end
