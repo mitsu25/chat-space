@@ -46,14 +46,14 @@ describe MessagesController, type: :controller do
 
   describe "post #create" do
 
-    context ",when user is signed in" do
+    context "when user is signed in" do
 
       before do
         login_user user
       end
 
-      context ",and recording sccuesses, " do
-        # メッセージの保存はできたのか
+      context "and recording sccuesses" do
+
         it "saves a new message to the database" do
           message_params = attributes_for(:message)
           expect{ post :create, group_id: group, user_id: user, message:message_params }.to change(Message, :count).by(1)
@@ -64,20 +64,21 @@ describe MessagesController, type: :controller do
           post :create, group_id: group, user_id: user, message: message_params
           expect(flash[:notice]).to include("メッセージを投稿しました。")
         end
-        # 意図した画面に遷移しているか
+
         it "redirects to messages#index after a message is saved" do
           message_params = attributes_for(:message)
           post :create, group_id: group, user_id: user, message: message_params
           expect(response).to redirect_to group_messages_path(group_id: group)
         end
+
       end
 
-      context ", and recording fails, " do
+      context "and recording fails" do
         it "doesn't save a new message to the database" do
           message_params = attributes_for(:message, body: nil, image: nil)
           expect{ post :create, group_id: group, user_id: user, message: message_params}.to change(Message, :count).by(0)
         end
-        # 該当するインスタンス変数はあるか
+
         it "generate an error message on flash" do
           message_params = attributes_for(:message, body: nil, image: nil)
           post :create, group_id: group, user_id: user, message: message_params
