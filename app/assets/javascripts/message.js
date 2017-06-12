@@ -19,7 +19,7 @@ $(function() {
     var form = $(this).get(0);
     var formData = new FormData(form);
     var groupId = $('.group_id').attr('value');
-    var url = '/groups/' + groupId + '/messages.json';
+    var url = '/groups/' + groupId + '/messages';
 
     $.ajax({
       type: 'POST',
