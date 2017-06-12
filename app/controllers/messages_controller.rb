@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
   end
 
   def get_group
-      @group  = Group.find(get_group_id)
+    @group  = Group.find(get_group_id)
   end
 
   def get_group_id
