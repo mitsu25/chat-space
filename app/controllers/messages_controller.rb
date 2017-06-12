@@ -11,8 +11,11 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
+      respond_to do |format|
+        format.html { redirect_to group_messages_path(@group) }
+        format.json
+      end
       flash.keep[:notice] = "メッセージを投稿しました。"
-      redirect_to group_messages_path(@group)
     else
       flash.keep[:alert] = "テキストを入力するか画像を添付してください。"
       redirect_to group_messages_path(@group)
@@ -25,6 +28,15 @@ class MessagesController < ApplicationController
   end
 
   def get_group
-    @group  = Group.find(params[:group_id])
+      @group  = Group.find(get_group_id)
   end
+
+  def get_group_id
+    if params[:group_id] == nil
+      current_user.groups.last.id
+    else
+      params[:group_id]
+    end
+  end
+
 end
