@@ -34,20 +34,21 @@
         = user.name
   .main__chat_area
     - @group.messages.each do |message|
-      .main__chat_area__chat_cotent
-        %p.main__chat_area__chat_content__name
+      %ul.main__chat_area__chat_cotent
+        %li.main__chat_area__chat_content__name
           = message.user.name
-        %p.main__chat_area__chat_content__date
+        %li.main__chat_area__chat_content__date
           = message.created_at
-        %p.main__chat_area__chat_content__text
+        %li.main__chat_area__chat_content__text
           - if message.body
             = message.body
-        %p.main__chat_area__chat_content__image
+        %li.main__chat_area__chat_content__image
           - if message.image
             = image_tag message.image
   .main__posting_area
-    = form_for([@group,@message]) do |f|
+    = form_for [@group,@message] do |f|
       = f.text_field :body, placeholder: "Type a message", class: "main__posting_area__form"
       = f.label 'image', class: 'main__posting_area__icon fa fa-file-image-o'  do
         = f.file_field :image, style: "display: none;", id: 'message_image'
       = f.submit :Send, class: "main__posting_area__button button"
+      %input{type: "hidden", value: @group.id, class: 'group_id' }
