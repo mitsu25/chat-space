@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
 
-  before_action :authenticate_user!
   before_action :get_group, only:  [:index, :create]
   before_action :get_groups, only: [:index, :create]
 
