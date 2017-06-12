@@ -1,24 +1,19 @@
 $(function() {
 
   function buildHTML(data) {
+    var itemName    = '<li class="main__chat_area__chat_content__name">' + data.userName + '</li>';
+    var itemTime    = '<li class="main__chat_area__chat_content__date">' + data.createdAt + '</li>';
+    var itemBody    = '<li class="main__chat_area__chat_content__text">' + data.body + '</li>';
 
     if (data.image.url === null) {
-      var itemName    = '<li class="main__chat_area__chat_content__name">' + data.userName + '</li>';
-      var itemTime    = '<li class="main__chat_area__chat_content__date">' + data.createdAt + '</li>';
-      var itemBody    = '<li class="main__chat_area__chat_content__text">' + data.body + '</li>';
       var messageList = '<ul class="main__chat_area__chat_cotentt">' + itemName + itemTime + itemBody + '</ul>';
-      return messageList;
-
     } else {
-      var itemName    = '<li class="main__chat_area__chat_content__name">' + data.userName + '</li>';
-      var itemTime    = '<li class="main__chat_area__chat_content__date">' + data.createdAt + '</li>';
-      var itemBody    = '<li class="main__chat_area__chat_content__text">' + data.body + '</li>';
-      var image       = '<img src="' + data.image.url + '">'
-      var itemImage   = '<li class="main__chat_area__chat_content__image">' + image +'</li>';
+      var imageTag    = '<img src="' + data.image.url + '">'
+      var itemImage   = '<li class="main__chat_area__chat_content__image">' + imageTag +'</li>';
       var messageList = '<ul class="main__chat_area__chat_cotentt">' + itemName + itemTime + itemBody + itemImage + '</ul>';
-      return messageList;
     }
 
+    return messageList;
   }
 
   $('#new_message').on('submit', function(e) {
