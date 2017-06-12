@@ -1,21 +1,23 @@
 class MessagesController < ApplicationController
 
-  before_action :authenticate_user!
-  before_action :get_group, only: [:index, :create]
+  before_action :get_group, only:  [:index, :create]
+  before_action :get_groups, only: [:index, :create]
 
   def index
-    @groups = current_user.groups.includes(:messages)
     @message = Message.new
   end
 
   def create
     @message = Message.new(message_params)
     if @message.save
+      respond_to do |format|
+        format.html { redirect_to group_messages_path(@group) }
+        format.json
+      end
       flash.keep[:notice] = "メッセージを投稿しました。"
-      redirect_to group_messages_path(@group)
     else
       flash.keep[:alert] = "テキストを入力するか画像を添付してください。"
-      redirect_to group_messages_path(@group)
+      render :index
     end
   end
 
@@ -25,6 +27,19 @@ class MessagesController < ApplicationController
   end
 
   def get_group
-    @group  = Group.find(params[:group_id])
+    @group  = Group.find(get_group_id)
   end
+
+  def get_group_id
+    if params[:group_id] == nil
+      current_user.groups.last.id
+    else
+      params[:group_id]
+    end
+  end
+
+  def get_groups
+    @groups = current_user.groups.includes(:messages)
+  end
+
 end
