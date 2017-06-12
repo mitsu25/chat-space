@@ -7,8 +7,7 @@
     = link_to new_group_path do
       %i.sidebar__upper_sidebar__item__icon.fa.fa-edit
   .sidebar__bottom_sidebar
-    - @groups.each do |group|
-      = render partial: "group", locals: { group: group}
+    = render partial: "group", collection: @groups
 
 .main
   .main__group_info
@@ -22,8 +21,7 @@
         = user.name
 
   .main__chat_area
-    - @group.messages.each do |message|
-      = render partial: "message", locals: { message: message}
+    = render partial: "message", collection: @group.messages
 
   .main__posting_area
     = form_for [@group,@message] do |f|
