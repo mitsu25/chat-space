@@ -11,9 +11,7 @@ $(function(){
 
   $('#user-search-field').on('keyup', function(e){
       e.preventDefault();
-      console.log(preKeyWord);
 
-      console.log("event on");
       var input = $(this).val();
       var keyWord = input.replace(/ /g,"");
       if (keyWord != preKeyWord) {
@@ -22,7 +20,7 @@ $(function(){
         if(keyWord.length !== 0) {
           $.ajax({
             type: 'GET',
-            url : '/users',
+            url : '/users/search',
             dataType : 'json',
             data     : {
               user: {
@@ -32,7 +30,7 @@ $(function(){
           })
           .done(function(data){
             e.preventDefault();
-            $.each(data,function(i,aData){
+            $.each(data, function(i, aData){
               var html = buildHtmlForUserSearch(aData);
               $('#user-search-result').append(html);
             });

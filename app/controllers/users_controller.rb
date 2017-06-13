@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def index
+  def search
     keyword = user_params[:name]
     @users  = User.where('name LIKE(?)',"#{keyword}%").limit(10)
     respond_to do |format|
