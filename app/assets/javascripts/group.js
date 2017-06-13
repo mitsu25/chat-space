@@ -1,8 +1,8 @@
 $(function(){
 
   function buildHtmlForUserSearch(userData){
-    var userName = `<p class="chat-group-user__name">${userData.name}</p>`
-    var addTag = `<a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${userData.id}" data-user-name="${userData.name}">追加</a>`
+    var userName = `<p class="chat-group-user__name">${ userData.name }</p>`
+    var addTag = `<a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ userData.id }" data-user-name="${ userData.name }">追加</a>`
     var html = '<div class="chat-group-user clearfix">' + userName + addTag + '</div>';
     return html;
   }
@@ -15,10 +15,10 @@ $(function(){
       var input = $(this).val();
       var keyWord = input.replace(/ /g,"");
       var searchResultList = $('#user-search-result');
-      if (keyWord != preKeyWord) {
+      if (keyWord != preKeyWord){
         searchResultList.find('.chat-group-user').remove()
 
-        if(keyWord.length !== 0) {
+        if(keyWord.length !== 0){
           $.ajax({
             type: 'GET',
             url : '/users/search',
