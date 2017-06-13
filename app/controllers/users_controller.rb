@@ -3,6 +3,14 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def search
+    keyword = user_params[:name]
+    @users  = User.where('name LIKE(?)',"#{keyword}%").limit(10)
+    respond_to do |format|
+      format.json
+    end
+  end
+
   def update
     @user = User.find(params[:id])
     @user.update(name:user_params[:name],email:user_params[:email])
