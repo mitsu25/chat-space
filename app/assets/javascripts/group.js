@@ -37,7 +37,7 @@ $(function(){
             });
           })
           .fail(function(){
-            alert('error');
+            alert('ユーザー検索に失敗しました');
           });
         }
       }
