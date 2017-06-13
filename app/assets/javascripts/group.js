@@ -38,6 +38,7 @@ $(function(){
             }
           })
           .done(function(data){
+
             e.preventDefault();
             $.each(data, function(i, userData){
               var html = buildHtmlForUserSearch(userData);
@@ -47,16 +48,13 @@ $(function(){
             $('.chat-group-user__btn--add').on('click', function(){
               var userId = $(this).attr('data-user-id');
               var userName = $(this).attr('data-user-name');
-              var html = buildHtmlForSelectedUser(userId,userName);
+              var html = buildHtmlForSelectedUser(userId, userName);
               $('#chat-group-users').append(html);
               $('.chat-group-user__btn--remove').on('click', function(){
-                console.log("remove button was pushed");
                 $(this).parent().remove();
               });
               $(this).parent().remove();
             });
-
-
 
           })
           .fail(function(){
