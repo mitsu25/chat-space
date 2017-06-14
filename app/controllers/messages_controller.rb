@@ -34,15 +34,13 @@ class MessagesController < ApplicationController
   end
 
   def get_group
-    @group  = Group.find(get_group_id)
+    if params[:group_id].present?
+      @group  = Group.find(get_group_id)
+    end
   end
 
   def get_group_id
-    if params[:group_id] == nil
-      current_user.groups.last.id
-    else
       params[:group_id]
-    end
   end
 
   def get_groups
