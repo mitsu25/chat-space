@@ -1,8 +1,13 @@
 $(function() {
 
-  function getUrlWithGroupId(){
+  // メソッド定義
+  function getGroupId(){
     var groupId  = $('.group_id').attr('value');
-    var url      = '/groups/' + groupId + '/messages';
+    return groupId
+  }
+
+  function getUrlWithGroupId(){
+    var url      = '/groups/' + getGroupId() + '/messages';
     return url
   }
 
@@ -12,11 +17,11 @@ $(function() {
     var itemBody    = '<li class="main__chat_area__chat_content__text">' + data.body + '</li>';
 
     if (data.image.url === null) {
-      var messageList = '<ul class="main__chat_area__chat_cotentt">' + itemName + itemTime + itemBody + '</ul>';
+      var messageList = '<ul class="main__chat_area__chat_cotent" data-message-id="${message.id}" >' + itemName + itemTime + itemBody + '</ul>';
     } else {
       var imageTag    = '<img src="' + data.image.url + '">'
       var itemImage   = '<li class="main__chat_area__chat_content__image">' + imageTag +'</li>';
-      var messageList = '<ul class="main__chat_area__chat_cotentt">' + itemName + itemTime + itemBody + itemImage + '</ul>';
+      var messageList = '<ul class="main__chat_area__chat_cotent" data-message-id="${message.id}" >' + itemName + itemTime + itemBody + itemImage + '</ul>';
     }
     return messageList;
 
@@ -31,6 +36,29 @@ $(function() {
     $('.main__chat_area').animate({scrollTop: $('.main__chat_area').get(0).scrollHeight}, { duration: 'slow' } );
   }
 
+  var reload = function(e){
+    var id = $('.main__chat_area__chat_cotent:last').attr("data-message-id");
+    var reloadUrl = getUrlWithGroupId() + '/reload'
+    $.ajax({
+      type        : 'GET',
+      url         :  reloadUrl,
+      dataType    : 'json',
+      data        : { user_id : getGroupId() }
+    })
+    .done(function(data){
+      $.each(data, function(i, message){
+        if( message.id > id){
+          $('.main__chat_area').append(buildHTML(message));
+          messageScroll();
+        }
+      });
+    })
+    .fail(function(){
+      alert('自動更新に失敗しました');
+    });
+  }
+
+  // イベント
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var form     = $(this).get(0);
@@ -56,5 +84,13 @@ $(function() {
       alert('error');
     });
   });
+
+  var autoReload = setInterval(function(){
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      reload();
+    } else {
+      clearInterval(autoReload);
+    }
+  }, 5000);
 
 });
