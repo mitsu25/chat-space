@@ -37,10 +37,8 @@ $(function() {
   }
 
   var reload = function(e){
-    console.log("relodaメソッド発火");
     var id = $('.main__chat_area__chat_cotent:last').attr("data-message-id");
     var reloadUrl = getUrlWithGroupId() + '/reload'
-    console.log("URL作成" + reloadUrl);
     $.ajax({
       type        : 'GET',
       url         :  reloadUrl,
@@ -48,9 +46,7 @@ $(function() {
       data        : { user_id : getGroupId() }
     })
     .done(function(data){
-    console.log("アクションからのレスポンス受け取り");
       $.each(data, function(i, message){
-        console.log("受け取ったJSONデータの配列を処理中");
         if( message.id > id){
           $('.main__chat_area').append(buildHTML(message));
           messageScroll();
