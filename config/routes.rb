@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   end
 
   resources  :groups, except: [:index, :destroy] do
-    resources  :messages, only: [:index, :create]
+    resources  :messages, only: [:index, :create] do
+      collection do
+        get 'reload'
+      end
+    end
   end
 
 end
