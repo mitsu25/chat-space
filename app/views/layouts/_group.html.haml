@@ -1,0 +1,8 @@
+= link_to edit_group_path(group) do
+  %p.main__group_info__edit_button.button Edit
+%p.main__group_info__name
+  = group.name
+%p.main__group_info__members Members:
+- group.users.each do |user|
+  %p.main__group_info__members__name
+    = user.name
