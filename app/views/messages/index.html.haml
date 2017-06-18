@@ -1,31 +1,14 @@
 .sidebar
   .sidebar__upper_sidebar
-    %p.sidebar__upper_sidebar__item
-      = current_user.name
-    = link_to edit_user_path(current_user.id) do
-      %i.sidebar__upper_sidebar__item__icon.fa.fa-cog
-    = link_to new_group_path do
-      %i.sidebar__upper_sidebar__item__icon.fa.fa-edit
+    = render partial: "layouts/user"
   .sidebar__bottom_sidebar
-    = render partial: "group", collection: @groups
+    = render partial: "layouts/groups", collection: @groups
 
 - if @group != nil
   .main
     .main__group_info
-      = link_to edit_group_path(@group) do
-        %p.main__group_info__edit_button.button Edit
-      %p.main__group_info__name
-        = @group.name
-      %p.main__group_info__members Members:
-      - @group.users.each do |user|
-        %p.main__group_info__members__name
-          = user.name
+      = render partial: "layouts/group", locals: {group: @group}
     .main__chat_area
-      = render partial: "message", collection: @group.messages
+      = render partial: "layouts/message", collection: @group.messages
     .main__posting_area
-      = form_for [@group,@message] do |f|
-        = f.text_field :body, placeholder: "Type a message", class: "main__posting_area__form"
-        = f.label 'image', class: 'main__posting_area__icon fa fa-file-image-o'  do
-          = f.file_field :image, style: "display: none;", id: 'message_image'
-        = f.submit :Send, class: "main__posting_area__button button"
-        %input{type: "hidden", value: @group.id, class: 'group_id' }
+      = render partial: "layouts/posting_area", locals: {group: @group, message: @message}
