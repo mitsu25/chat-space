@@ -1,0 +1,6 @@
+= form_for [group,message] do |f|
+  = f.text_field :body, placeholder: "Type a message", class: "main__posting_area__form"
+  = f.label 'image', class: 'main__posting_area__icon fa fa-file-image-o'  do
+    = f.file_field :image, style: "display: none;", id: 'message_image'
+  = f.submit :Send, class: "main__posting_area__button button"
+  %input{type: "hidden", value: group.id, class: 'group_id' }
